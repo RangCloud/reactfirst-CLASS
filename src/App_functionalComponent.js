@@ -1,8 +1,6 @@
 import './App.css';
 import React, {Component} from 'react';
-import MyComponent_f from './classComponents/MyComponent_f';
-import MyCompState from './classComponents/MyCompState';
-import MyCompState2 from './classComponents/MyCompState2';
+import MyComponent from './classComponents/MyComponent_f';
 
 class App extends Component{
     render(){
@@ -11,9 +9,7 @@ class App extends Component{
         return (
             <div>
                 <div className='react'>{name}</div>
-                <MyComponent_f name={name} teacher={teacher}/>
-                <MyCompState/>
-                <MyCompState2/>
+                <MyComponent name={name} teacher={teacher}/>
             </div>
         )
     }
