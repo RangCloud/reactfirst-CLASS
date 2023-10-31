@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import MyComponent from './classComponents/MyComponent_f';
+import {useState} from 'react';
 
 function Header(props){
   return(
@@ -75,12 +75,14 @@ function Article(props){
 }
 
 function App() {
-    const mode = 'WELCOME';
     const topics = [
         {id:1, title:"htmlㅋ", body:"html is ~"},
         {id:2, title:"cssㅋ", body:"css is ~"},
         {id:3, title:"jsㅋ", body:"js is ~"},
     ]
+
+    const[id, setId] = useState(null);
+    const [mode, setMode] = useState('WELCOME');
     let content = null;
     if(mode === 'WELCOME'){
         content = <Article title = "Welcome" body = "hello web"/>;
@@ -95,12 +97,20 @@ function App() {
             /* function(){
             alert('여기는 header');
             } */
-            ()=>{mode = 'WELCOME'; alert(mode);}
+            ()=>{setMode('WELCOME');}
         }/>
         <Nav topics = {topics} onChangeMode={
-          (id)=>{mode = 'READ'; alert(mode);}
+          (_id)=>{setMode('READ');
+        setId(_id)}
         }/>
         {content}
+        <a href="/create" onClick={
+          event=>{
+            event.preventDefault();
+            setMode('Create');
+          }
+        }
+          >create</a>
         <Nav2 topics = {topics}/>
         <Nav2 topics = {topics} onChangeMode={
         function(id){
