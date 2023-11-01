@@ -8,6 +8,7 @@ const getAverage = (numbers)=>{
 const MyAverage = ()=>{
     const [list, setList] = useState([]);
     const [number, setNumber] = useState('');
+    const inputE1 = useRef(null);
     /* const onChange = e=>{setNumber(e.target.value)};
     const onInsert = e=>{
         const nextList = list.concat(parseInt(number));
@@ -21,11 +22,12 @@ const MyAverage = ()=>{
         const nextList = list.concat(parseInt(number));
         setList(nextList);
         setNumber('');
+        inputE1.current.focus();
     }, [number, list])
 
     return(
         <div>
-            <input value={number} onChange={onChange}></input>
+            <input value={number} onChange={onChange} ref={inputE1}></input>
             <button onClick={onInsert}>숫자 등록</button>
             <ul>
                 {list.map((value, index)=>(<li key={index}>{value}</li>))}
