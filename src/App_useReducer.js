@@ -27,7 +27,13 @@ import React, {useState, useReducer} from "react";
 
 function App(){
     function countReducer(oldCount, action){
-        
+        if(action === 'UP'){
+            return oldCount + 1;
+        }else if(action === 'RESET'){
+            return 0;
+        }else if(action === 'DOWN'){
+            return oldCount - 1;
+        }
     }
     const [count, countDispatch] = useReducer(countReducer, 0);
     function down(){
